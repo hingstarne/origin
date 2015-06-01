@@ -8,18 +8,18 @@
 # %commit and %ldflags are intended to be set by tito custom builders provided
 # in the rel-eng directory. The values in this spec file will not be kept up to date.
 %{!?commit:
-%global commit 9503be85ce88d450b777f3873ddebccd34056633
+%global commit d297cce3b9322727a9c5e20458e899582c487608
 }
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 # OpenShift specific ldflags from hack/common.sh os::build:ldflags
 %{!?ldflags:
-%global ldflags -X github.com/openshift/origin/pkg/version.majorFromGit 0 -X github.com/openshift/origin/pkg/version.minorFromGit 5+ -X github.com/openshift/origin/pkg/version.versionFromGit v0.5.3 -X github.com/openshift/origin/pkg/version.commitFromGit 9503be8 -X github.com/GoogleCloudPlatform/kubernetes/pkg/version.gitCommit 496be63 -X github.com/GoogleCloudPlatform/kubernetes/pkg/version.gitVersion v0.17.1-804-g496be63
+%global ldflags -X github.com/openshift/origin/pkg/version.majorFromGit 0 -X github.com/openshift/origin/pkg/version.minorFromGit 0+ -X github.com/openshift/origin/pkg/version.versionFromGit v0.0.2 -X github.com/openshift/origin/pkg/version.commitFromGit d297cce -X github.com/GoogleCloudPlatform/kubernetes/pkg/version.gitCommit 496be63 -X github.com/GoogleCloudPlatform/kubernetes/pkg/version.gitVersion v0.17.1-804-g496be63
 }
 
 Name:           openshift
 # Version is not kept up to date and is intended to be set by tito custom
 # builders provided in the rel-eng directory of this project
-Version:        0.0.2
+Version:        0.0.3
 Release:        1%{?dist}
 Summary:        Open Source Platform as a Service by Red Hat
 License:        ASL 2.0
@@ -265,6 +265,9 @@ fi
 %{_bindir}/pod
 
 %changelog
+* Mon Jun 01 2015 Arne-Kristian HINGST (contractor) <arne-kristian.hingst@amadeus.com>
+- Changed tgas
+
 * Mon Jun 01 2015 Arne-Kristian HINGST (contractor) <arne-kristian.hingst@amadeus.com>
 - Merge pull request #2122 from sdodson/add-proxy-env-example
   (dmcphers+openshiftbot@redhat.com)
